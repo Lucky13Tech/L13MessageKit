@@ -53,9 +53,9 @@ protocol Presentable: NSObjectProtocol {
 
 protocol AutoDismissable: Dismissable {
     
-    var dismissAfter: L13TransientMessageDuration? {
-        get set
-    }
+//    var dismissAfter: L13TransientMessageDuration? {
+//        get set
+//    }
     
 }
 

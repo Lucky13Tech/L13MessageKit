@@ -21,29 +21,8 @@ class L13MessageKitTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        try! L13MessageManager().postMessage(PrinterMessage(message: "Made It"))
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
-}
-
-class PrinterMessage: L13Message {
-    
-    var message: String
-    
-    init(message: String) {
-        self.message = message
-    }
-    
-    override func fire() {
-        print("Output Test: \(message)")
+    func testMessage() {
+        
     }
     
 }

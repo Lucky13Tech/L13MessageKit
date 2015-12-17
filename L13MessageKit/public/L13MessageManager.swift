@@ -10,13 +10,13 @@ import UIKit
 
 public protocol L13MessageManagerDelegate: NSObjectProtocol {
     
-    func messageManager(manager: L13MessageManager, willPostMessage message: L13Message) -> Bool
-    
-    func messageManager(manager: L13MessageManager, didPostMessage message: L13Message)
-    
-    func messageManager(manager: L13MessageManager, willCancelMessage message: L13Message) -> Bool
-    
-    func messageManager(manager: L13MessageManager, didCancelMessage message: L13Message)
+//    func messageManager(manager: L13MessageManager, willPostMessage message: L13Message) -> Bool
+//    
+//    func messageManager(manager: L13MessageManager, didPostMessage message: L13Message)
+//    
+//    func messageManager(manager: L13MessageManager, willCancelMessage message: L13Message) -> Bool
+//    
+//    func messageManager(manager: L13MessageManager, didCancelMessage message: L13Message)
     
 }
 

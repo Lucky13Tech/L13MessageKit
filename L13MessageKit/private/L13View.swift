@@ -14,8 +14,10 @@ import UIKit
 */
 class L13View: UIView, L13Animatable {
     
-    var containerFrame: CGRect = CGRectZero
-    
-    
+    var parentView: UIView = UIView(frame: CGRectZero)
+    var startingPoint: CGPoint = CGPointZero
+    var endingPoint: CGPoint = CGPointZero
+    var startingSize: CGRect = CGRectZero
+    var endingSize: CGRect = CGRectZero
 
 }

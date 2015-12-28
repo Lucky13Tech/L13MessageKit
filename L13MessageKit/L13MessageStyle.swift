@@ -17,7 +17,7 @@ protocol Firable: NSObjectProtocol {
     /*!
     *   Triggers the object to fire the object
     */
-    func fire()
+    func fire(presenter: Presenter)
     
 }
 
@@ -29,7 +29,7 @@ protocol Cancelable: NSObjectProtocol {
 
 protocol Dismissable: NSObjectProtocol {
     
-    func dismiss()
+    func dismiss(presenter: Presenter)
     
 }
 
@@ -47,21 +47,30 @@ protocol Actionable: NSObjectProtocol {
 
 protocol Presentable: NSObjectProtocol {
     
-    func present()
+}
+
+protocol ViewPresentable: Presentable {
+    
+    var view: UIView { get }
+    
+}
+
+protocol ViewControllerPresentable: Presentable {
+    
+    var viewController: UIViewController { get }
     
 }
 
 protocol AutoDismissable: Dismissable {
     
-//    var dismissAfter: L13TransientMessageDuration? {
-//        get set
-//    }
+    var dismissAfter: L13TransientMessageDuration? {
+        get set
+    }
     
 }
 
 protocol Configurable: NSObjectProtocol {
     
-    func createView() -> UIView
     
 }
 

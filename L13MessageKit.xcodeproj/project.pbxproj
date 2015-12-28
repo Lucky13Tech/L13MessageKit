@@ -12,15 +12,19 @@
 		84937EBB1C126990004DA73A /* L13MessageKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937EBA1C126990004DA73A /* L13MessageKitTests.swift */; };
 		84937EC61C126A36004DA73A /* L13MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937EC51C126A36004DA73A /* L13MessageManager.swift */; };
 		84937ECA1C126B40004DA73A /* L13Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937EC91C126B40004DA73A /* L13Message.swift */; };
-		84937ECD1C126CB0004DA73A /* L13Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937ECC1C126CB0004DA73A /* L13Messaging.swift */; };
 		84937ECE1C1271CF004DA73A /* L13MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937EC51C126A36004DA73A /* L13MessageManager.swift */; };
 		84937ECF1C1271E6004DA73A /* L13Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937EC91C126B40004DA73A /* L13Message.swift */; };
-		84937ED01C12728F004DA73A /* L13Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937ECC1C126CB0004DA73A /* L13Messaging.swift */; };
 		84937ED21C128899004DA73A /* L13MessageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937ED11C128899004DA73A /* L13MessageStyle.swift */; };
 		84937ED31C1297F6004DA73A /* L13MessageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937ED11C128899004DA73A /* L13MessageStyle.swift */; };
 		84C76B621C1ED96600689331 /* L13PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C76B611C1ED96600689331 /* L13PresentationType.swift */; };
 		84C76B661C20317000689331 /* L13Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C76B651C20317000689331 /* L13Presentation.swift */; };
 		84C76B681C22489000689331 /* L13View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C76B671C22489000689331 /* L13View.swift */; };
+		84E920AC1C2704C700EA4E43 /* L13PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E920AB1C2704C700EA4E43 /* L13PresentationManager.swift */; };
+		84E920AE1C2C288C00EA4E43 /* L13MessageManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E920AD1C2C288C00EA4E43 /* L13MessageManagerTest.swift */; };
+		84E920AF1C2C2C4400EA4E43 /* L13View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C76B671C22489000689331 /* L13View.swift */; };
+		84E920B01C2C2C4D00EA4E43 /* L13PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C76B611C1ED96600689331 /* L13PresentationType.swift */; };
+		84E920B11C2C2C5500EA4E43 /* L13Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C76B651C20317000689331 /* L13Presentation.swift */; };
+		84E920B21C2C2C7C00EA4E43 /* L13PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E920AB1C2704C700EA4E43 /* L13PresentationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,11 +46,12 @@
 		84937EBC1C126990004DA73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84937EC51C126A36004DA73A /* L13MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13MessageManager.swift; path = public/L13MessageManager.swift; sourceTree = "<group>"; };
 		84937EC91C126B40004DA73A /* L13Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13Message.swift; path = public/L13Message.swift; sourceTree = "<group>"; };
-		84937ECC1C126CB0004DA73A /* L13Messaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L13Messaging.swift; sourceTree = "<group>"; };
 		84937ED11C128899004DA73A /* L13MessageStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L13MessageStyle.swift; sourceTree = "<group>"; };
 		84C76B611C1ED96600689331 /* L13PresentationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13PresentationType.swift; path = private/L13PresentationType.swift; sourceTree = "<group>"; };
 		84C76B651C20317000689331 /* L13Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13Presentation.swift; path = public/L13Presentation.swift; sourceTree = "<group>"; };
 		84C76B671C22489000689331 /* L13View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13View.swift; path = private/L13View.swift; sourceTree = "<group>"; };
+		84E920AB1C2704C700EA4E43 /* L13PresentationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13PresentationManager.swift; path = private/L13PresentationManager.swift; sourceTree = "<group>"; };
+		84E920AD1C2C288C00EA4E43 /* L13MessageManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L13MessageManagerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +107,7 @@
 			children = (
 				84937EBA1C126990004DA73A /* L13MessageKitTests.swift */,
 				84937EBC1C126990004DA73A /* Info.plist */,
+				84E920AD1C2C288C00EA4E43 /* L13MessageManagerTest.swift */,
 			);
 			path = L13MessageKitTests;
 			sourceTree = "<group>";
@@ -119,10 +125,10 @@
 		84937ECB1C126C62004DA73A /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				84937ECC1C126CB0004DA73A /* L13Messaging.swift */,
 				84937ED11C128899004DA73A /* L13MessageStyle.swift */,
 				84C76B611C1ED96600689331 /* L13PresentationType.swift */,
 				84C76B671C22489000689331 /* L13View.swift */,
+				84E920AB1C2704C700EA4E43 /* L13PresentationManager.swift */,
 			);
 			name = Private;
 			sourceTree = "<group>";
@@ -239,9 +245,9 @@
 				84937ECA1C126B40004DA73A /* L13Message.swift in Sources */,
 				84C76B661C20317000689331 /* L13Presentation.swift in Sources */,
 				84C76B681C22489000689331 /* L13View.swift in Sources */,
-				84937ECD1C126CB0004DA73A /* L13Messaging.swift in Sources */,
 				84937ED21C128899004DA73A /* L13MessageStyle.swift in Sources */,
 				84C76B621C1ED96600689331 /* L13PresentationType.swift in Sources */,
+				84E920AC1C2704C700EA4E43 /* L13PresentationManager.swift in Sources */,
 				84937EC61C126A36004DA73A /* L13MessageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,9 +258,13 @@
 			files = (
 				84937ECF1C1271E6004DA73A /* L13Message.swift in Sources */,
 				84937ECE1C1271CF004DA73A /* L13MessageManager.swift in Sources */,
+				84E920B21C2C2C7C00EA4E43 /* L13PresentationManager.swift in Sources */,
+				84E920B01C2C2C4D00EA4E43 /* L13PresentationType.swift in Sources */,
+				84E920AF1C2C2C4400EA4E43 /* L13View.swift in Sources */,
 				84937EBB1C126990004DA73A /* L13MessageKitTests.swift in Sources */,
 				84937ED31C1297F6004DA73A /* L13MessageStyle.swift in Sources */,
-				84937ED01C12728F004DA73A /* L13Messaging.swift in Sources */,
+				84E920AE1C2C288C00EA4E43 /* L13MessageManagerTest.swift in Sources */,
+				84E920B11C2C2C5500EA4E43 /* L13Presentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

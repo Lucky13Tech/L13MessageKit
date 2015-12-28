@@ -6,7 +6,7 @@
 //  Copyright © 2015 Lucky 13 Technologies, LLC. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol L13Presenter {
     
@@ -71,10 +71,13 @@ class L13NormalShow: L13BasePresentation {
 class L13SlideUpShow: L13BasePresentation {
     
     override func perform() {
-        UIView.animateWithDuration(NSTimeInterval.standardDuration, delay: NSTimeInterval.zero, options: .CurveEaseInOut, animations: {
-//            self.view.center.y += self.view.containerFrame.
+        UIView.animateWithDuration(0.35, delay: 0.0, options: .CurveEaseOut, animations: {
+            // Raise the frame up. But remember we need to account for the tab bar if it exists
+            self.view.frame.origin.y -= (self.view.parentView.frame.height + UIApplication.sharedApplication().bottomPadding)
             }) { complete in
-                
+//                if let dismissal = self.scheduledDismissal {
+//                    self.performSelector(Selector("dismiss"), withObject: nil, afterDelay: dismissal.rawValue)
+//                }
         }
     }
     
@@ -88,6 +91,12 @@ class L13NormalHide: L13BasePresentation {
             }) { complete in
                 
         }
+    }
+}
+
+class L13SlideDownHide: L13BasePresentation {
+    override func perform() {
+        UIView.animateWithDuration(NSTimeInterval.standardDuration, delay: NSTimeInterval.zero, options: .CurveEaseInOut, animations: { self.view.frame.origin.y += (self.view.parentView.frame.height + UIApplication.sharedApplication().bottomPadding) }, completion: nil)
     }
 }
 

@@ -9,7 +9,7 @@
 import XCTest
 @testable import L13MessageKit
 
-class L13MessageKitTests: XCTestCase {
+class L13MessageTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,8 +21,22 @@ class L13MessageKitTests: XCTestCase {
         super.tearDown()
     }
     
-    func testMessage() {
-        
+    func testMessage_IsShownWhenFired() {
+        let message = L13Message()
+        message.fire()
+        XCTAssertTrue(message.isShown)
+    }
+    
+    func testMessage_isNotShownAfterDismissal() {
+        let message = L13Message()
+        message.fire()
+        message.dismiss()
+        XCTAssertFalse(message.isShown)
+    }
+    
+    func testMessage_isVisableOnFire() {
+        let message = L13Message()
+        message.fire()
     }
     
 }

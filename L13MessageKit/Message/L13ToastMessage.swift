@@ -10,30 +10,35 @@ import UIKit
 
 public class L13ToastView: L13Message, TransientPresentation {
     
-    private let toastHieght: CGFloat = 45
-    private let textPadding: CGFloat = 16
+    public let mainLayout: UIStackView
+    
+    public var toastHeight: CGFloat = 45
+    public var textPadding: CGFloat = 16
+    
+    
     
     public required init(title: String?, message: String?) {
+        self.mainLayout = UIStackView()
         super.init(title: title, message: message)
-        let top: CGFloat = frame.height - UIApplication.sharedApplication().bottomPadding //- toastHieght
-        self.frame = CGRectMake(0, top, frame.width, toastHieght)
-        self.backgroundColor = UIColor.purpleColor()//self.viewConfiguration.messageViewColor
-        self.alpha = 0.85//self.viewConfiguration.messageAlpha
-        self.layer.cornerRadius = 0//self.viewConfiguration.messageViewCornerRadius
-        let mainLayout = UIStackView(frame: CGRectMake(8, 8, self.frame.width - self.textPadding, self.frame.height - self.textPadding))
+        let top: CGFloat = frame.height - UIApplication.sharedApplication().bottomPadding
+        self.frame = CGRectMake(0, top, frame.width, toastHeight)
+        self.backgroundColor = UIColor.purpleColor()
+        self.alpha = 0.85
+        self.layer.cornerRadius = 0
+        mainLayout.frame = CGRectMake(8, 8, self.frame.width - self.textPadding, self.frame.height - self.textPadding)
         mainLayout.axis = .Vertical
         mainLayout.distribution = .Fill
         mainLayout.alignment = .FirstBaseline
+        mainLayout.setContentHuggingPriority(250, forAxis: .Horizontal)
         self.addSubview(mainLayout)
-        self.titleLabel.font = UIFont.systemFontOfSize(8)//self.viewConfiguration.titleFont
-        self.titleLabel.textColor = UIColor.whiteColor()//self.viewConfiguration.titleColor
-        self.titleLabel.setContentHuggingPriority(301, forAxis: .Vertical)
+        self.titleLabel.font = UIFont.systemFontOfSize(8)
+        self.titleLabel.textColor = UIColor.whiteColor()
         mainLayout.addArrangedSubview(self.titleLabel)
-        self.messageLabel.font = UIFont.systemFontOfSize(18)//self.viewConfiguration.subtitleFont
-        self.messageLabel.textColor = UIColor.whiteColor()//self.viewConfiguration.subtitleColor
+        self.messageLabel.font = UIFont.systemFontOfSize(18)
+        self.messageLabel.textColor = UIColor.whiteColor()
         self.messageLabel.textAlignment = .Left
-        self.messageLabel.setContentHuggingPriority(300, forAxis: .Vertical)
         mainLayout.addArrangedSubview(self.messageLabel)
+        print("Main Layout frame \(mainLayout.frame)")
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -60,4 +65,18 @@ public class L13Toast: L13ToastView, SlideUpPresentationAnimation, SlideDownDism
             super.removeFromSuperview()
         }
     }
+}
+
+public class L13ToastDrawer: L13Toast, L13PullUpAction {
+    
+    
+    public required init(title: String?, message: String?) {
+        super.init(title: title, message: message)
+        self.makePullable()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

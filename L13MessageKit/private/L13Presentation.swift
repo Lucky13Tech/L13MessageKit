@@ -127,7 +127,8 @@ extension UIApplication {
     var bottomPadding: CGFloat {
         get {
             if let root = rootViewController as? UITabBarController {
-                return root.tabBar.bounds.height
+                // Removing 4 because there is a 4 point pad on the top of the tabbar
+                return root.tabBar.frame.height - 4
             }
             return 0
         }

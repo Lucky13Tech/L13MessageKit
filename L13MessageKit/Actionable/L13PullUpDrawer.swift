@@ -14,7 +14,11 @@ public protocol L13PullUpAction {
     
     func calculatedViewHeight() -> CGFloat
     
+    func willOpen(toHeight: CGFloat)
+    
     func didOpen()
+    
+    func willClose(toHeight: CGFloat)
     
     func didClose()
     
@@ -46,12 +50,14 @@ extension L13PullUpAction where Self: UIView {
                     // Just allow the view to set
                 } else if self.frame.height > thresholdHeight {
                     let calculcatedFrame = CGRectMake(self.frame.origin.x, (startingFrame.origin.y - self.calculatedViewHeight()), self.frame.width, self.calculatedViewHeight())
+                        self.willOpen(self.calculatedViewHeight())
                     self.animateViewMovement(calculcatedFrame, withDuration: 0.35, withDampening: 0.39, withIntialVelocity: 35.0) {
                         completed in
                         self.didOpen()
                     }
                 } else {
                     let calculcatedFrame = CGRectMake(self.frame.origin.x, startingFrame.origin.y - startingFrame.height, self.frame.width, startingFrame.height)
+                    self.willClose(calculcatedFrame.height)
                     self.animateViewMovement(calculcatedFrame, withDuration: 0.35, withDampening: 0.43, withIntialVelocity: 40.0) {
                         completed in
                         self.didClose()
@@ -82,13 +88,15 @@ extension L13PullUpAction where Self: UIView {
         let tapRecognizer = UITapGestureRecognizer { [unowned self] (recognizer) -> Void in
             if self.frame.height == self.calculatedViewHeight()  {
                 let calculcatedFrame = CGRectMake(self.frame.origin.x, startingFrame.origin.y - startingFrame.height, self.frame.width, startingFrame.height)
+                    self.willClose(calculcatedFrame.height)
                 self.animateViewMovement(calculcatedFrame, withDuration: 0.35, withDampening: 0.43, withIntialVelocity: 40.0) {
                     completed in
                     self.didClose()
                 }
             } else {
-                let calculcatedFrame = CGRectMake(self.frame.origin.x, (startingFrame.origin.y - self.calculatedViewHeight()), self.frame.width, self.calculatedViewHeight())
-                self.animateViewMovement(calculcatedFrame, withDuration: 0.35, withDampening: 0.39, withIntialVelocity: 35.0) {
+                let calculatedFrame = CGRectMake(self.frame.origin.x, (startingFrame.origin.y - self.calculatedViewHeight()), self.frame.width, self.calculatedViewHeight())
+                self.willOpen(calculatedFrame.height)
+                self.animateViewMovement(calculatedFrame, withDuration: 0.35, withDampening: 0.39, withIntialVelocity: 35.0) {
                     completed in
                     self.didOpen()
                 }
@@ -117,30 +125,16 @@ extension L13PullUpAction where Self: UIView {
         return 150.0
     }
     
-//    func animateViewMovement(transform: CGAffineTransform) {
-//        UIView.animateWithDuration(0.35, delay: NSTimeInterval.zero, usingSpringWithDamping: 6.0, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveLinear, animations: {
-//                self.transform = transform
-//            }, completion: nil)
-//    }
-    
-    public func open() {
-//        UIView.animateWithDuration(0.35, delay: NSTimeInterval.zero, usingSpringWithDamping: 6.0, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveLinear, animations: {
-//                self.frame = CGRectMake(self.frame.origin.x, startingFrame.origin.y - startingFrame.height, self.frame.width, startingFrame.height)
-//            }) { done in
-//                self.didOpen()
-//        }
+    public func willOpen(toHeight: CGFloat) {
+        return
     }
     
     public func didOpen() {
         return
     }
     
-    public func close() {
-//        UIView.animateWithDuration(0.35, delay: NSTimeInterval.zero, usingSpringWithDamping: 6.0, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveLinear, animations: {
-//            
-//            }) { done in
-//                self.didClose()
-//        }
+    public func willClose(toHeight: CGFloat) {
+        return
     }
     
     public func didClose() {

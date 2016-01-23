@@ -57,8 +57,10 @@ extension SlideDownDismissalAnimation where Self: UIView {
     }
     
     public func animateSlideDismissal(handler: () -> ()) {
-        UIView.animateWithDuration(NSTimeInterval.standardDuration, delay: NSTimeInterval.zero, options: .CurveEaseInOut, animations: { self.frame.origin.y += (self.superview!.frame.height + UIApplication.sharedApplication().bottomPadding) }, completion: { done in
-            handler()
-        })
+        if let supaView = self.superview {
+            UIView.animateWithDuration(NSTimeInterval.standardDuration, delay: NSTimeInterval.zero, options: .CurveEaseInOut, animations: { self.frame.origin.y += (supaView.frame.height + UIApplication.sharedApplication().bottomPadding) }, completion: { done in
+                handler()
+            })
+        }
     }
 }

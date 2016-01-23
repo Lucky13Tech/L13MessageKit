@@ -40,6 +40,7 @@ public protocol L13MessageManagerDelegate: NSObjectProtocol {
     
 }
 
+public typealias L13PresentableMessage = protocol<Message, Presentation>
 /**
  # L13MessageManager 
  Provides a way to manage messages available to the user
@@ -56,122 +57,96 @@ public protocol L13MessageManagerDelegate: NSObjectProtocol {
  */
 public class L13MessageManager: NSObject {
     
-//    public var delegate: L13MessageManagerDelegate?
-//    
-//    // The messages should be tracked at a class level not an instance. This will prevent multiple lists
-//    private static var _messages = L13Queue<L13Message>()
-//    // The presented message should be at a class level to avoid multiple instances
-//    private static var _presentedMessage: L13Message?
-//    var presenter = L13PresentationManager()
-//    
-//    // Current Messages
-//    public var scheduledMessages: [L13Message] {
-//        get {
-//            return L13MessageManager._messages.array
-//        }
-//    }
-//    
-//    // Provides the currently presented message
-//    public var presentedMessage: L13Message? {
-//        get {
-//            return L13MessageManager._presentedMessage
-//        }
-//    }
-//    
-//    // Post message
-//    public func postMessage(message: L13Message) throws {
-//        // Check if message is already being presented
-//        if presentedMessage != nil {
-//            // If Message is presented place in queue
-//            L13MessageManager._messages.enqueue(message)
-//        } else {
-//            // Let the message know it is getting ready to be displayed
-//            message.willLoad()
-//            message.didLoad()
-//            message.willShow()
-//            // else show
-//            message.fire(L13PresentationManager())
-//            // Once a message is displayed place in presentedMesssge var
-//            L13MessageManager._presentedMessage = message
-//            if let autoDismiss = message as? AutoDismissable {
-//                if let time = autoDismiss.dismissAfter {
-//                    L13MessageManager.delay(time.rawValue) {
-//                        if let msg = self.presentedMessage {
-//                            if msg.identifier == message.identifier {
-//                                message.willHide()
-//                                message.dismiss(L13PresentationManager())
-//                                L13MessageManager._presentedMessage = nil
-//                                message.didHide()
-//                                self.validateSchedule()
-//                            }
-//                            
-//                        }
-//                    }
-//                }
-//            }
-//            message.didShow()
-//        }
-//    }
-//    
-//    /**
-//     Executes a postMessage after a specified amount of time
-//     
-//     Delay does not guarantee that the message will be posted at the specified time. There are several factors that go into consideration. One factor is largely determined by the looper. Another factor, which can greatly effect the delay, is if there are other scheduled messages.
-//    */
-//    public func postMessage(message: L13Message, withDelay delay: NSTimeInterval) throws {
-//        L13MessageManager.delay(delay) {
-//            do {
-//                try self.postMessage(message)
-//            } catch {
-//
-//            }
-//        }
-//    }
-//    
-//    public func dismissPresentedMessage() throws {
-//        // Remove the message from presentedMessage only if the messages are the same
-//        guard let presentedMessage = L13MessageManager._presentedMessage else {
-//            throw L13MessageManagerError.NoPresentedMessage
-//        }
-//        
-//        presentedMessage.willHide()
-//        presentedMessage.dismiss(L13PresentationManager())
-//        L13MessageManager._presentedMessage = nil
-//        presentedMessage.didHide()
-//        self.validateSchedule()
-//    }
-//    
-//    public func cancelScheduledMessage(message: L13Message) throws {
-//        L13MessageManager._messages.removeElement(message)
-//    }
-//    
-//    func validateSchedule() -> Bool{
-//        if scheduledMessages.count > 0 && L13MessageManager._presentedMessage == nil {
-//            let message = L13MessageManager._messages.dequeue()
-//            try! self.postMessage(message!)
-//        }
-//        return false
-//    }
-//    
-//    func clear() {
-//        L13MessageManager._presentedMessage = nil
-//        L13MessageManager._messages.clear()
-//    }
+    public var delegate: L13MessageManagerDelegate?
+    
+    // The messages should be tracked at a class level not an instance. This will prevent multiple lists
+    private static var _messages = L13Queue<ScheduledMessageWrapper>()
+    // The presented message should be at a class level to avoid multiple instances
+    private static var _presentedMessage: L13PresentableMessage?
+    
+    // Current Messages
+    public var scheduledMessages: [L13PresentableMessage] {
+        get {
+            // A bit of a hack to get around the typealias
+            var presentable: [L13PresentableMessage] = []
+            for scheduledMessage: ScheduledMessageWrapper in L13MessageManager._messages.array {
+                presentable.append(scheduledMessage.message)
+            }
+            return presentable
+        }
+    }
+    
+    // Provides the currently presented message
+    public var presentedMessage: L13PresentableMessage? {
+        get {
+            return L13MessageManager._presentedMessage
+        }
+    }
+    
+    /**
+     Executes a postMessage after a specified amount of time
+
+     Delay does not guarantee that the message will be posted at the specified time. There are several factors that go into consideration. One factor is largely determined by the looper. Another factor, which can greatly effect the delay, is if there are other scheduled messages.
+    */
+    public func postMessage(message: L13PresentableMessage, withDelay delay: NSTimeInterval = 0.0) {
+        if presentedMessage != nil {
+            // If we have a message already displayed we need to place in the queue
+            L13MessageManager._messages.enqueue(ScheduledMessageWrapper(message: message))
+        } else {
+            L13MessageManager.delay(delay) {
+                message.present()
+                L13MessageManager._presentedMessage = message
+            }
+        }
+    }
+    
+    public func dismissPresentedMessage() throws {
+        // Remove the message from presentedMessage only if the messages are the same
+        guard let presentedMessage = L13MessageManager._presentedMessage else {
+            throw L13MessageManagerError.NoPresentedMessage
+        }
+
+        presentedMessage.dismiss()
+        L13MessageManager._presentedMessage = nil
+        self.validateSchedule()
+    }
+
+    public func cancelScheduledMessage(message: L13PresentableMessage) throws {
+        L13MessageManager._messages.removeElement(ScheduledMessageWrapper(message: message))
+    }
+
+    func validateSchedule() -> Bool{
+        if scheduledMessages.count > 0 && L13MessageManager._presentedMessage == nil {
+            let message = L13MessageManager._messages.dequeue()
+            self.postMessage(message!.message)
+        }
+        return false
+    }
+
+    func clear() {
+        L13MessageManager._presentedMessage = nil
+        L13MessageManager._messages.clear()
+    }
 
 }
 
-//extension L13Message: Firable, Dismissable {
-//    
-//    func fire(presenter: Presenter) {
-//        self._shown = true
-//        presenter.presentMessage(self)
-//    }
-//    
-//    func dismiss(presenter: Presenter) {
-//        presenter.dismissMessage(self)
-//        self._shown = false
-//    }
-//}
+private class ScheduledMessageWrapper: NSObject {
+    
+    private let message: L13PresentableMessage
+    
+    init(message: L13PresentableMessage) {
+        self.message = message
+    }
+    
+    var identifier: String {
+        get {
+            return message.identifier
+        }
+    }
+    
+    
+    
+}
 
 
 /////////// Should be in CommonKit

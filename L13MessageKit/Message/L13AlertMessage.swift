@@ -10,4 +10,10 @@ import UIKit
 
 public class L13AlertMessage: UIAlertController, Message, DisruptivePresentation {
     
+    public var identifier: String {
+        get {
+            return "\(self.view.tag)"
+        }
+    }
+    
 }

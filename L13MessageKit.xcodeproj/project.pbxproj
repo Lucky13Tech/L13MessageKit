@@ -25,6 +25,7 @@
 		84A862B51C3DAA890085D29C /* L13SwipableAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A862B41C3DAA890085D29C /* L13SwipableAction.swift */; };
 		84A862B71C3EA5CF0085D29C /* UIGestureRecognizerClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A862B61C3EA5CF0085D29C /* UIGestureRecognizerClosure.swift */; };
 		84B9F2F61C4DE08C00A99529 /* README.MD in Sources */ = {isa = PBXBuildFile; fileRef = 84B9F2F51C4DE08C00A99529 /* README.MD */; };
+		84B9F2F81C4FA50B00A99529 /* L13AutoDismissable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9F2F71C4FA50B00A99529 /* L13AutoDismissable.swift */; };
 		84C76B661C20317000689331 /* L13AlphaPresentationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C76B651C20317000689331 /* L13AlphaPresentationAnimation.swift */; };
 		84E920AC1C2704C700EA4E43 /* L13Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E920AB1C2704C700EA4E43 /* L13Presentation.swift */; };
 		84E920AE1C2C288C00EA4E43 /* L13MessageManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E920AD1C2C288C00EA4E43 /* L13MessageManagerTest.swift */; };
@@ -62,6 +63,7 @@
 		84A862B41C3DAA890085D29C /* L13SwipableAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13SwipableAction.swift; path = Actionable/L13SwipableAction.swift; sourceTree = "<group>"; };
 		84A862B61C3EA5CF0085D29C /* UIGestureRecognizerClosure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIGestureRecognizerClosure.swift; path = Actionable/UIGestureRecognizerClosure.swift; sourceTree = "<group>"; };
 		84B9F2F51C4DE08C00A99529 /* README.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.MD; sourceTree = "<group>"; };
+		84B9F2F71C4FA50B00A99529 /* L13AutoDismissable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13AutoDismissable.swift; path = Actionable/L13AutoDismissable.swift; sourceTree = "<group>"; };
 		84C76B651C20317000689331 /* L13AlphaPresentationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13AlphaPresentationAnimation.swift; path = public/L13AlphaPresentationAnimation.swift; sourceTree = "<group>"; };
 		84E920AB1C2704C700EA4E43 /* L13Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = L13Presentation.swift; path = private/L13Presentation.swift; sourceTree = "<group>"; };
 		84E920AD1C2C288C00EA4E43 /* L13MessageManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L13MessageManagerTest.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				84A862B61C3EA5CF0085D29C /* UIGestureRecognizerClosure.swift */,
 				840588851C3F5B5F00D3F6F5 /* L13MoveableAction.swift */,
 				840588871C4A867D00D3F6F5 /* L13PullUpDrawer.swift */,
+				84B9F2F71C4FA50B00A99529 /* L13AutoDismissable.swift */,
 			);
 			name = Actionable;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				84B9F2F61C4DE08C00A99529 /* README.MD in Sources */,
 				84A862AE1C3C27090085D29C /* L13AlertMessage.swift in Sources */,
 				840588861C3F5B5F00D3F6F5 /* L13MoveableAction.swift in Sources */,
+				84B9F2F81C4FA50B00A99529 /* L13AutoDismissable.swift in Sources */,
 				84E920AC1C2704C700EA4E43 /* L13Presentation.swift in Sources */,
 				84937EC61C126A36004DA73A /* L13MessageManager.swift in Sources */,
 				84A862B51C3DAA890085D29C /* L13SwipableAction.swift in Sources */,

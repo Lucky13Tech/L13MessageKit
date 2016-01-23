@@ -10,6 +10,8 @@ import UIKit
 
 public protocol Message {
     
+    var identifier: String { get }
+    
 }
 
 public class L13Message: UIView, Message {

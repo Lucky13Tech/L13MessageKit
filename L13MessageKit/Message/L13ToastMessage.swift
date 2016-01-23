@@ -47,8 +47,9 @@ public class L13ToastView: L13Message, TransientPresentation {
     
 }
 
-public class L13Toast: L13ToastView, SlideUpPresentationAnimation, SlideDownDismissalAnimation {
+public class L13Toast: L13ToastView, SlideUpPresentationAnimation, SlideDownDismissalAnimation, L13AutoDismissable {
     
+    public var duration: L13MessageDuration?
     
     public override func willMoveToSuperview(newSuperview: UIView?) {
         if let newView = newSuperview {
@@ -58,6 +59,9 @@ public class L13Toast: L13ToastView, SlideUpPresentationAnimation, SlideDownDism
     
     public override func didMoveToSuperview() {
         self.animateSlidePresentation()
+        if let duration = self.duration {
+            self.makeAutoDismissable(dismissIn: duration.rawValue)
+        }
     }
     
     public override func removeFromSuperview() {
@@ -77,6 +81,14 @@ public class L13ToastDrawer: L13Toast, L13PullUpAction {
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func calculatedViewHeight() -> CGFloat {
+        return 250
+    }
+    
+    public func willOpen(toHeight: CGFloat) {
+        
     }
     
 }

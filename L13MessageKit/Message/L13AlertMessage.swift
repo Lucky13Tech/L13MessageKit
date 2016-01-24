@@ -16,4 +16,16 @@ public class L13AlertMessage: UIAlertController, Message, DisruptivePresentation
         }
     }
     
+    public var isShown: Bool {
+        get {
+            return self.presentingViewController != nil
+        }
+    }
+    
+    public var isDismissed: Bool {
+        get {
+            return !self.isShown
+        }
+    }
+    
 }

@@ -130,6 +130,15 @@ public class L13MessageManager: NSObject {
 
 }
 
+extension Message where Self: L13Message {
+    
+    internal func onMessageDismissed() {
+        L13MessageManager._presentedMessage = nil
+        L13MessageManager().validateSchedule()
+    }
+    
+}
+
 private class ScheduledMessageWrapper: NSObject {
     
     private let message: L13PresentableMessage

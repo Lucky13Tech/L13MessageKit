@@ -11,6 +11,8 @@ import UIKit
 public protocol Message {
     
     var identifier: String { get }
+    var isShown: Bool { get }
+    var isDismissed: Bool { get }
     
 }
 
@@ -32,6 +34,11 @@ public class L13Message: UIView, Message {
     
     internal var _identifier: String = NSUUID().UUIDString
     internal var _shown: Bool = false
+    internal var _dismissed: Bool = false {
+        didSet {
+            self.onMessageDismissed()
+        }
+    }
     
     public var identifier: String {
         get {
@@ -42,6 +49,12 @@ public class L13Message: UIView, Message {
     public var isShown: Bool {
         get {
             return _shown
+        }
+    }
+    
+    public var isDismissed: Bool {
+        get {
+            return _dismissed
         }
     }
     
@@ -63,6 +76,11 @@ public class L13Message: UIView, Message {
     
     public override func didMoveToSuperview() {
         print("Moved to superView")
+    }
+    
+    public override func removeFromSuperview() {
+        _dismissed = true
+        super.removeFromSuperview()
     }
     
 }
